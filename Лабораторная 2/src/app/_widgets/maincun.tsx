@@ -1,5 +1,15 @@
 import React from 'react'
 
+import Image from 'next/image'
+
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious
+} from '@/components/ui/carousel'
+
 const Maincun = () => {
 	return (
 		<div className="MainCun" id="1">
