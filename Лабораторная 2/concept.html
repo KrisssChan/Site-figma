@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cats</title>
+		<link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="osnova">
+			<div class="header">
+				<div class="v0_13"></div>
+				<span class="git">КотоГид уже нет</span>
+				<p class="heading">Всё о породах</p>
+			</div>
+			<div class="page1">
+				<p class="heading1">
+					<br /><br />Добро пожаловать на КотоГид - Ваш <br />путеводитель в мире породистых кошек!
+				</p>
+				<p>
+					<b>КотоГид </b>– это уникальный информационный ресурс, созданный для всех <br />любителей
+					кошек, владельцев, заводчиков и тех, кто только задумывается о <br />приобретении пушистого
+					друга. На нашем сайте вы найдете самую полную и <br />достоверную информацию о породах самых
+					интересных котов.
+				</p>
+			</div>
+		</div>
+
+		<script>
+			document.querySelectorAll('.slider-container').forEach(sliderContainer => {
+				const slides = sliderContainer.querySelectorAll('.slide')
+				const track = sliderContainer.querySelector('.slider-track')
+				const prevButton = sliderContainer.querySelector('.arrow-left')
+				const nextButton = sliderContainer.querySelector('.arrow-right')
+				let currentIndex = 1 // Начальное значение для центрирования второго слайда
+				const slideMargin = 50
+
+				function updateSlider() {
+					slides.forEach((slide, index) => {
+						slide.classList.remove('main-slide')
+						if (index === currentIndex) {
+							slide.classList.add('main-slide')
+						}
+					})
+
+					// Ширина одного слайда с учетом отступов
+					const slideWidth = slides[0].clientWidth + slideMargin
+
+					// Смещение для центрирования
+					const offset =
+						-(currentIndex * slideWidth) + track.clientWidth / 2 - slides[currentIndex].clientWidth / 2
+
+					track.style.transform = `translateX(${offset}px)`
+				}
+
+				// Показ следующего слайда
+				function showNextSlide() {
+					currentIndex = (currentIndex + 1) % slides.length
+					updateSlider()
+				}
+
+				// Показ предыдущего слайда
+				function showPrevSlide() {
+					currentIndex = (currentIndex - 1 + slides.length) % slides.length
+					updateSlider()
+				}
+
+				nextButton.addEventListener('click', showNextSlide)
+				prevButton.addEventListener('click', showPrevSlide)
+
+				updateSlider() // Инициализация слайдера при загрузке
+			})
+		</script>
+	</body>
+</html>
